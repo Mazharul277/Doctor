@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,10 +43,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this,"This is home",Toast.LENGTH_LONG).show();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
+        if (id==R.id.profileId)
+        {
+            startActivity(new Intent(getApplicationContext(),ProfileView.class));
+        }
+
         if (id==R.id.appointmentId)
         {
             startActivity(new Intent(getApplicationContext(),Tabbed.class));
         }
+        if (id==R.id.logOutId)
+        {
+            FirebaseAuth.getInstance().signOut();
+            finish();
+        }
+
 
 
         return false;
